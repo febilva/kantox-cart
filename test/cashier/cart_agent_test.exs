@@ -15,7 +15,7 @@ defmodule Cashier.Agent.CartTest do
       assert :ok = Cart.add_item(agent, green_tea)
 
       items = Cart.get_items(agent)
-      assert {:ok, [green_tea]} == items
+      assert {:ok, [^green_tea]} = items
     end
 
     test "allows duplicate items", %{agent: agent, green_tea: green_tea} do
@@ -23,21 +23,21 @@ defmodule Cashier.Agent.CartTest do
       assert :ok = Cart.add_item(agent, green_tea)
 
       items = Cart.get_items(agent)
-      assert {:ok, [green_tea, green_tea]} == items
+      assert {:ok, [^green_tea, ^green_tea]} = items
     end
 
     test "handles nil item", %{agent: agent} do
       assert :invalid_product = Cart.add_item(agent, nil)
 
       items = Cart.get_items(agent)
-      assert {:ok, []} == items
+      assert {:ok, []} = items
     end
 
     test "handles empty string item", %{agent: agent} do
       assert :invalid_product = Cart.add_item(agent, "")
 
       items = Cart.get_items(agent)
-      assert {:ok, []} == items
+      assert {:ok, []} = items
     end
   end
 
