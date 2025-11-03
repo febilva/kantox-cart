@@ -1,5 +1,5 @@
-defmodule Agent.CartTest do
-  alias Agent.Cart
+defmodule Cashier.Agent.CartTest do
+  alias Cashier.Agent.Cart
   use ExUnit.Case, async: true
 
   setup do

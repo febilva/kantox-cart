@@ -1,6 +1,6 @@
-defmodule Agent.Cart do
+defmodule Cashier.Agent.Cart do
   @moduledoc """
-  Defines a simple `Agent` that holds a list of items for a cart.
+  A simple `Agent` that holds a list of items for a cart.
   """
   use Agent
 
