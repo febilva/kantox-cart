@@ -7,8 +7,13 @@ defmodule Cashier.MixProject do
       version: "0.1.0",
       elixir: "~> 1.19",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls]
     ]
+  end
+
+  def cli do
+    [preferred_envs: [coveralls: :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test]]
   end
 
   # Run "mix help compile.app" to learn about applications.
@@ -22,6 +27,9 @@ defmodule Cashier.MixProject do
   defp deps do
     [
       {:decimal, "~> 2.0"},
+      {:excoveralls, "~> 0.18", only: :test},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
     ]
   end
 end
